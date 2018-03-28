@@ -1,5 +1,8 @@
 package net.itca;
 
+import net.itca.activation.ActivationFunction;
+import net.itca.util.RandomNumberGenerator;
+
 import java.util.*;
 
 public class Neuron{
@@ -14,9 +17,9 @@ public class Neuron{
     private double outputBeforeActivation;
     private int numberOfInputs;
 
-    private IActivationFunction activationFunction;
+    private ActivationFunction activationFunction;
 
-    public Neuron(int numberOfInputs, IActivationFunction activationFunction){
+    public Neuron(int numberOfInputs, ActivationFunction activationFunction){
         this.numberOfInputs = numberOfInputs;
         this.weights = new ArrayList<>(numberOfInputs+1);
         this.inputs = new ArrayList<>(numberOfInputs);
@@ -41,7 +44,7 @@ public class Neuron{
         if (numberOfInputs > 0){
             if(inputs != null && weights != null){
                 for(var i = 0; i <= numberOfInputs; i++){
-                    outputBeforeActivation += (i == numberOfInputs ? bias : input.get(i)) * weights.get(i); 
+                    outputBeforeActivation += (i == numberOfInputs ? bias : inputs.get(i)) * weights.get(i);
                 }
             }
         }
