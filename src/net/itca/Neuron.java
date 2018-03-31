@@ -9,11 +9,11 @@ public class Neuron{
 
     // protected
     protected List<Double> weights;
-    protected Double bias = 1d;
+    protected double bias = 1d;
 
     //privates
     private List<Double> inputs;
-    private Double output;
+    private double output;
     private double outputBeforeActivation;
     private int numberOfInputs;
 
@@ -27,7 +27,19 @@ public class Neuron{
 
     }
 
-    private void init(){
+    public void setInputs(List<Double> inputs) {
+        this.inputs = inputs;
+    }
+
+    public double getOutput(){
+        return output;
+    }
+
+    public void setActivationFunction(ActivationFunction function) {
+        this.activationFunction = activationFunction;
+    }
+
+    public void init(){
         for(var i = 0; i <= numberOfInputs; i++){
             var newWeight = RandomNumberGenerator.generateNext();
             if (i < weights.size()){
@@ -39,7 +51,7 @@ public class Neuron{
     }
 
 
-    private void calc(){
+    public void calc(){
         outputBeforeActivation = 0;
         if (numberOfInputs > 0){
             if(inputs != null && weights != null){

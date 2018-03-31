@@ -2,8 +2,13 @@ package net.itca.activation;
 
 public interface ActivationFunction {
 
-    default double calc(double in){
-        return 0;
+    public enum FunctionType {
+        STEP,
+        LINEAR,
+        SIGMOID,
+        HYPTERTAN
     }
+
+    public double calc(double in);
 
 }
